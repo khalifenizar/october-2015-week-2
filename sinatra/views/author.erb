@@ -1,0 +1,26 @@
+<!-- views/author.erb -->
+
+<link rel="stylesheet" href="/main.css">
+
+<h1>Hi, I'm Nizar.</h1>
+
+<p>I'm the author of this here Web site.</p>
+
+<a href="https://twitter.com/khalifenizar">
+  Follow me on Twitter.
+</a>
+
+<!-- HTML COMMENT -->
+<%# ERB COMMENT %>
+<% if Time.now.monday? %>
+  <p>
+    I'm not a big fan of Tuesdays like today.
+  </p>
+<% end %>
+
+
+<p>
+  Nizar was born
+  <%= @years_ago %>
+  years ago.
+</p>
