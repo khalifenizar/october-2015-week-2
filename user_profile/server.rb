@@ -46,3 +46,9 @@ get "/profile" do
     redirect to("/login")
   end
 end
+
+get "/logout" do
+  session[:current_user] = nil
+
+  redirect to("/login")
+end
