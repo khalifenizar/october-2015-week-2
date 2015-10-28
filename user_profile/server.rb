@@ -3,6 +3,8 @@
 require "sinatra"
 require "sinatra/reloader" if development?
 
+enable(:sessions)
+
 credentials = [
   { :user => "nizar", :pass => "swordfish" },
   { :user => "josh", :pass => "password1" },
@@ -29,6 +31,7 @@ post "/process_login" do
   end
 
   if matched_user != nil
+    session[:current_user] = matched_user
     redirect to("/profile")
   else
     redirect to("/login")
@@ -36,5 +39,10 @@ post "/process_login" do
 end
 
 get "/profile" do
-  "PROFILE HTML"
+  if session[:current_user] != nil
+    @name = session[:current_user]
+    erb(:user_profile)
+  else
+    redirect to("/login")
+  end
 end
